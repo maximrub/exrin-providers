@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <RepositoryUrl>https://github.com/maximrub/ExrinProviders</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
+    <Copyright>Maxim Rubchinsky</Copyright>
+    <Company>Maxim Rubchinsky</Company>
+    <Authors>Maxim Rubchinsky</Authors>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://maxim.rubchinsky.com</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/maximrub/ExrinProviders/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>Xamarin Forms, Exrin, IOC, Autofac, Microsoft.Extensions.DependencyInjection</PackageTags>
+    <Description>Autofac IOC packge for the Exrin Xamarin MVVM framework with support for Microsoft Extensions services</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.0.0" />
+    <PackageReference Include="Exrin" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="1.6.1" />
+  </ItemGroup>
+
+</Project>
