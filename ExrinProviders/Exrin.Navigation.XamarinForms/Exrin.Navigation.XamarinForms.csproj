@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-win+net45+wp8+win81+wpa8</PackageTargetFallback>
+    <Version>1.0.0</Version>
+    <Authors>Maxim Rubchinsky</Authors>
+    <Company>Maxim Rubchinsky</Company>
+    <Description>Navigation packge for the Exrin Xamarin MVVM framework</Description>
+    <Copyright>Maxim Rubchinsky</Copyright>
+    <PackageLicenseUrl>https://github.com/maximrub/ExrinProviders/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/maximrub/ExrinProviders</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/maximrub/ExrinProviders</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
+    <PackageTags>Xamarin Forms, Exrin, Navigation</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Exrin" Version="1.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="2.3.3.180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="1.6.1" />
+  </ItemGroup>
+
+</Project>
