@@ -12,6 +12,7 @@
     <PackageLicenseUrl>https://github.com/maximrub/ExrinProviders/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>Xamarin Forms, Exrin, IOC, Autofac, Microsoft.Extensions.DependencyInjection</PackageTags>
     <Description>Autofac IOC packge for the Exrin Xamarin MVVM framework with support for Microsoft Extensions services</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
