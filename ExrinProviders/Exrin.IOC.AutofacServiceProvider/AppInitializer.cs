@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Exrin.Abstraction;
 using Exrin.Framework;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +11,7 @@ namespace Exrin.IOC.AutofacServiceProvider
         private readonly IServiceCollection r_Services;
         private readonly ContainerBuilder r_Container;
         private readonly Action<object> r_SetRoot;  
-        private Bootstrapper m_Bootstrapper;
+        private IInjectionProxy m_Resolver;
 
         protected AppInitializer(PlatformInitializer i_PlatformInitializer, Action<object> i_SetRoot)
         {
@@ -20,11 +21,11 @@ namespace Exrin.IOC.AutofacServiceProvider
             r_Container = i_PlatformInitializer.Container;
         }
 
-        public Bootstrapper Bootstrapper
+        public IInjectionProxy Resolver
         {
             get
             {
-                return m_Bootstrapper;
+                return m_Resolver;
             }
         }
 
@@ -49,8 +50,8 @@ namespace Exrin.IOC.AutofacServiceProvider
             ConfigureServices();
             Register();
             InjectionProxy injectionProxy = new InjectionProxy(r_Services, r_Container);
-            m_Bootstrapper = new Bootstrapper(injectionProxy, r_SetRoot);
-            m_Bootstrapper.Init();
+            Bootstrapper bootstrapper = new Bootstrapper(injectionProxy, r_SetRoot);
+            m_Resolver = bootstrapper.Init();
         }
 
         protected virtual void ConfigureServices()
