@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-win+net45+wp8+win81+wpa8</PackageTargetFallback>
+    <Authors>Maxim Rubchinsky</Authors>
+    <Company>Maxim Rubchinsky</Company>
+    <Copyright>Maxim Rubchinsky</Copyright>
+    <PackageLicenseUrl>https://github.com/maximrub/ExrinProviders/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/maximrub/ExrinProviders</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/maximrub/ExrinProviders</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
+    <PackageTags>Xamarin Forms, Exrin</PackageTags>
+    <Description>Base packge for the Exrin Xamarin MVVM framework</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BaseView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="BaseView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Exrin" Version="1.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="2.3.3.180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="BaseView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="1.6.1" />
+  </ItemGroup>
+
+</Project>
