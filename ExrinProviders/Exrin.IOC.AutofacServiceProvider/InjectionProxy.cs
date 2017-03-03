@@ -38,6 +38,7 @@ namespace Exrin.IOC.AutofacServiceProvider
         {
             m_Container = r_Builder.Build();
             m_ServiceProvider = new Autofac.Extensions.DependencyInjection.AutofacServiceProvider(m_Container);
+            r_RegisteredTypes.Clear();
         }
 
         public bool IsRegistered<T>()
@@ -55,7 +56,7 @@ namespace Exrin.IOC.AutofacServiceProvider
             where TInterface : class 
             where TType : class, TInterface
         {
-            register(r_Builder.RegisterType<Type>().As<TInterface>(), i_InstanceType);
+            register(r_Builder.RegisterType<TType>().As<TInterface>(), i_InstanceType);
             r_RegisteredTypes.AddLast(typeof(TInterface));
         }
 
@@ -74,15 +75,29 @@ namespace Exrin.IOC.AutofacServiceProvider
             r_RegisteredTypes.AddLast(typeof(T));
         }
 
+        /// <exception cref="NullReferenceException">IInjectionProxy not initialized.</exception>
         public object Get(Type i_Type)
         {
+            if(m_ServiceProvider == null)
+            {
+                throw new NullReferenceException(
+                    $"{nameof(m_ServiceProvider)} is null. Have you called {nameof(IInjectionProxy)}.{nameof(Init)}() and {nameof(IInjectionProxy)}.{nameof(Complete)}()?");
+            }
+
             return m_ServiceProvider.GetService(i_Type);
         }
 
+        /// <exception cref="NullReferenceException">IInjectionProxy not initialized.</exception>
         public T Get<T>(bool i_Optional = false) 
             where T : class
         {
-            if(i_Optional && !IsRegistered<T>())
+            if (m_ServiceProvider == null)
+            {
+                throw new NullReferenceException(
+                    $"{nameof(m_ServiceProvider)} is null. Have you called {nameof(IInjectionProxy)}.{nameof(Init)}() and {nameof(IInjectionProxy)}.{nameof(Complete)}()?");
+            }
+
+            if (i_Optional && !IsRegistered<T>())
             {
                 return null;
             }
