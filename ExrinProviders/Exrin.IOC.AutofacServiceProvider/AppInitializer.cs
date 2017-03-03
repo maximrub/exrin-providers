@@ -51,14 +51,25 @@ namespace Exrin.IOC.AutofacServiceProvider
             Register();
             InjectionProxy injectionProxy = new InjectionProxy(r_Services, r_Container);
             Bootstrapper bootstrapper = new Bootstrapper(injectionProxy, r_SetRoot);
+            RegisterFrameworkAssemblies(bootstrapper);
             m_Resolver = bootstrapper.Init();
         }
 
+        /// <summary>
+        /// Configure Framework services
+        /// </summary>
         protected virtual void ConfigureServices()
         {
         }
 
+        /// <summary>
+        /// Register Components using Autofac container builder
+        /// </summary>
         protected virtual void Register()
+        {
+        }
+
+        protected virtual void RegisterFrameworkAssemblies(Bootstrapper i_Bootstrapper)
         {
         }
     }
