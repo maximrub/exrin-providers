@@ -21,10 +21,16 @@ namespace Exrin.IOC.AutofacServiceProvider
             Register();
         }
 
+        /// <summary>
+        /// Configure Framework services
+        /// </summary>
         protected virtual void ConfigureServices()
         {
         }
 
+        /// <summary>
+        /// Register Components using Autofac container builder
+        /// </summary>
         protected virtual void Register()
         {
         }

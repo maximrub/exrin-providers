@@ -69,6 +69,10 @@ namespace Exrin.IOC.AutofacServiceProvider
         {
         }
 
+        /// <summary>
+        /// Register Exrin Framework Assemblies
+        /// </summary>
+        /// <param name="i_Bootstrapper"></param>
         protected virtual void RegisterFrameworkAssemblies(Bootstrapper i_Bootstrapper)
         {
         }
