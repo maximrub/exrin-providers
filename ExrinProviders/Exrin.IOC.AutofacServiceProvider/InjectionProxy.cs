@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Autofac;
 using Autofac.Builder;
 using Autofac.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ namespace Exrin.IOC.AutofacServiceProvider
     {
         private readonly IServiceCollection r_Services;
         private readonly ContainerBuilder r_Builder;
+        private readonly LinkedList<Type> r_RegisteredTypes;
         private IServiceProvider m_ServiceProvider;
         private IContainer m_Container;
 
@@ -23,6 +25,7 @@ namespace Exrin.IOC.AutofacServiceProvider
         {
             r_Services = i_Services;
             r_Builder = i_Builder;
+            r_RegisteredTypes = new LinkedList<Type>();
         }
 
         public void Init()
@@ -39,12 +42,13 @@ namespace Exrin.IOC.AutofacServiceProvider
 
         public bool IsRegistered<T>()
         {
-            return m_Container.IsRegistered<T>();
+            return m_Container != null ? m_Container.IsRegistered<T>() : r_RegisteredTypes.Contains(typeof(T));
         }
 
         public void Register<T>(InstanceType i_InstanceType = InstanceType.SingleInstance) where T : class
         {
             register(r_Builder.RegisterType<T>(), i_InstanceType);
+            r_RegisteredTypes.AddLast(typeof(T));
         }
 
         public void RegisterInterface<TInterface, TType>(InstanceType i_InstanceType = InstanceType.SingleInstance) 
@@ -52,6 +56,7 @@ namespace Exrin.IOC.AutofacServiceProvider
             where TType : class, TInterface
         {
             register(r_Builder.RegisterType<Type>().As<TInterface>(), i_InstanceType);
+            r_RegisteredTypes.AddLast(typeof(TInterface));
         }
 
         public void RegisterInstance<TInterface, TType>(TType i_Instance) 
@@ -59,12 +64,14 @@ namespace Exrin.IOC.AutofacServiceProvider
             where TType : class, TInterface
         {
             r_Builder.RegisterInstance<TType>(i_Instance).As<TInterface>().SingleInstance();
+            r_RegisteredTypes.AddLast(typeof(TInterface));
         }
 
         public void RegisterInstance<T>(T i_Instance) 
             where T : class
         {
             r_Builder.RegisterInstance(i_Instance).As<T>().SingleInstance();
+            r_RegisteredTypes.AddLast(typeof(T));
         }
 
         public object Get(Type i_Type)
