@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <PackageReference Include="Exrin" Version="1.0.5" />
-    <PackageReference Include="Xamarin.Forms" Version="2.3.3.180" />
   </ItemGroup>
 
   <ItemGroup>
