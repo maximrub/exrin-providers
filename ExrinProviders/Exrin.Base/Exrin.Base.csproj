@@ -13,6 +13,7 @@
     <PackageTags>Xamarin Forms, Exrin</PackageTags>
     <Description>Base packge for the Exrin Xamarin MVVM framework</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

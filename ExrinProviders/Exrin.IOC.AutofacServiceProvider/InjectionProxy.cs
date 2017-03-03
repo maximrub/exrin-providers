@@ -52,19 +52,19 @@ namespace Exrin.IOC.AutofacServiceProvider
             r_RegisteredTypes.AddLast(typeof(T));
         }
 
-        public void RegisterInterface<TInterface, TType>(InstanceType i_InstanceType = InstanceType.SingleInstance) 
+        public void RegisterInterface<TInterface, TComponent>(InstanceType i_InstanceType = InstanceType.SingleInstance) 
             where TInterface : class 
-            where TType : class, TInterface
+            where TComponent : class, TInterface
         {
-            register(r_Builder.RegisterType<TType>().As<TInterface>(), i_InstanceType);
+            register(r_Builder.RegisterType<TComponent>().As<TInterface>(), i_InstanceType);
             r_RegisteredTypes.AddLast(typeof(TInterface));
         }
 
-        public void RegisterInstance<TInterface, TType>(TType i_Instance) 
+        public void RegisterInstance<TInterface, TComponent>(TComponent i_Instance) 
             where TInterface : class 
-            where TType : class, TInterface
+            where TComponent : class, TInterface
         {
-            r_Builder.RegisterInstance<TType>(i_Instance).As<TInterface>().SingleInstance();
+            r_Builder.RegisterInstance<TComponent>(i_Instance).As<TInterface>().SingleInstance();
             r_RegisteredTypes.AddLast(typeof(TInterface));
         }
 

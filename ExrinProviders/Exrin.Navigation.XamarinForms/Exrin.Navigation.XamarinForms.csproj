@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <PackageTargetFallback>$(PackageTargetFallback);portable-win+net45+wp8+win81+wpa8</PackageTargetFallback>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Maxim Rubchinsky</Authors>
     <Company>Maxim Rubchinsky</Company>
     <Description>Navigation packge for the Exrin Xamarin MVVM framework</Description>
