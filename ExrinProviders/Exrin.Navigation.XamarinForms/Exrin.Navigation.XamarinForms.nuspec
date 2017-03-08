@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/maximrub/ExrinProviders</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Maxim Rubchinsky</copyright>
-    <tags>Xamarin.Forms Exrin IOC LightInject Microsoft.Extensions.DependencyInjection</tags>
+    <tags>Xamarin.Forms Exrin Navigation</tags>
   </metadata>
 </package>
