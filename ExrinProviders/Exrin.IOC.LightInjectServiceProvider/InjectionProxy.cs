@@ -30,7 +30,7 @@ namespace Exrin.IOC.LightInjectServiceProvider
 
         public bool IsRegistered<T>()
         {
-            return r_Container.AvailableServices.Any(i_Service => i_Service.ServiceType.Equals(typeof(T)));
+            return r_Container.CanGetInstance(typeof(T), string.Empty);
         }
 
         public void Register<T>(InstanceType i_InstanceType = InstanceType.SingleInstance) where T : class
