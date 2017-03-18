@@ -7,7 +7,9 @@ namespace Exrin.IOC.LightInjectServiceProvider
 {
     public class Bootstrapper
     {
-        private static Bootstrapper s_Instance;
+        private static Bootstrapper s_Instance = null;
+        private static bool s_IsInitialized = false;
+        private Exrin.Framework.Bootstrapper m_Bootstrapper;
 
         private Bootstrapper(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer, Action<object> i_SetRoot)
         {
@@ -17,7 +19,6 @@ namespace Exrin.IOC.LightInjectServiceProvider
             configureServices(services, i_AppInitializer, i_PlatformInitializer);
             register(container, i_AppInitializer, i_PlatformInitializer);
             configureExrin(container, services, i_AppInitializer, i_SetRoot);
-            notifyInitialized(i_PlatformInitializer, i_AppInitializer);
         }
 
         /// <exception cref="NullReferenceException" accessor="get">Bootstrapper Init was not called</exception>
@@ -25,7 +26,7 @@ namespace Exrin.IOC.LightInjectServiceProvider
         {
             get
             {
-                if(s_Instance == null)
+                if(!IsInitialized)
                 {
                     throw new NullReferenceException("Bootstrapper Init was not called");
                 }
@@ -34,14 +35,30 @@ namespace Exrin.IOC.LightInjectServiceProvider
             }
         }
 
+        public static bool IsInitialized
+        {
+            get
+            {
+                return s_IsInitialized;
+            }
+        }
+
         public IInjectionProxy Resolver { get; private set; }
 
         public static void Init(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer, Action<object> i_SetRoot)
         {
-            if (s_Instance == null)
+            if (!IsInitialized)
             {
                 s_Instance = new Bootstrapper(i_PlatformInitializer, i_AppInitializer, i_SetRoot);
+                s_IsInitialized = true;
+                notifyInitialized(i_PlatformInitializer, i_AppInitializer);
             }
+        }
+
+        private static void notifyInitialized(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer)
+        {
+            i_PlatformInitializer.OnInitialized(Instance.Resolver);
+            i_AppInitializer.OnInitialized(Instance.Resolver);
         }
 
         private void configureExrin(
@@ -51,15 +68,9 @@ namespace Exrin.IOC.LightInjectServiceProvider
             Action<object> i_SetRoot)
         {
             InjectionProxy injectionProxy = new InjectionProxy(i_Container, i_Services);
-            Exrin.Framework.Bootstrapper bootstrapper = new Exrin.Framework.Bootstrapper(injectionProxy, i_SetRoot);
-            i_AppInitializer.RegisterFrameworkAssemblies(bootstrapper);
-            Resolver = bootstrapper.Init();
-        }
-
-        private void notifyInitialized(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer)
-        {
-            i_PlatformInitializer.OnInitialized(Resolver);
-            i_AppInitializer.OnInitialized(Resolver);
+            m_Bootstrapper = new Exrin.Framework.Bootstrapper(injectionProxy, i_SetRoot);
+            i_AppInitializer.RegisterFrameworkAssemblies(m_Bootstrapper);
+            Resolver = m_Bootstrapper.Init();
         }
 
         private void register(ServiceContainer i_Container, AppInitializer i_AppInitializer, PlatformInitializer i_PlatformInitializer)
