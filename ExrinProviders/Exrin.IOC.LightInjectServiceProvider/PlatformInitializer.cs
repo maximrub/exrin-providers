@@ -1,38 +1,34 @@
-﻿using LightInject;
+﻿using System;
+using Exrin.Abstraction;
+using LightInject;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Exrin.IOC.LightInjectServiceProvider
 {
     public abstract class PlatformInitializer
     {
-        protected PlatformInitializer()
-        {
-            Container = new ServiceContainer();
-            Services = new ServiceCollection();
-        }
-
-        public IServiceCollection Services { get; private set; }
-
-        public ServiceContainer Container { get; private set; }
-
-        internal void Init()
-        {
-            ConfigureServices();
-            Register();
-        }
+        public event EventHandler<IInjectionProxy> Initialized;
 
         /// <summary>
         /// Configure Framework services
         /// </summary>
-        protected virtual void ConfigureServices()
+        protected internal virtual void ConfigureServices(IServiceCollection i_Services)
         {
         }
 
         /// <summary>
         /// Register Components using LightInject container
         /// </summary>
-        protected virtual void Register()
+        protected internal virtual void Register(ServiceContainer i_Container)
         {
+        }
+
+        protected internal virtual void OnInitialized(IInjectionProxy i_Resolver)
+        {
+            if(Initialized != null)
+            {
+                Initialized.Invoke(this, i_Resolver);
+            }
         }
     }
 }

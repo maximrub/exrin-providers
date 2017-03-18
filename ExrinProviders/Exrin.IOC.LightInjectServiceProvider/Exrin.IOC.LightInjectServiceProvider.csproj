@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppInitializer.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="InjectionProxy.cs" />
     <Compile Include="PlatformInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
