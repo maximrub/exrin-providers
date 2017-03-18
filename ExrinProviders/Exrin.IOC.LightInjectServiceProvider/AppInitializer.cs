@@ -2,6 +2,7 @@
 using Exrin.Abstraction;
 using LightInject;
 using Microsoft.Extensions.DependencyInjection;
+using Xamarin.Forms;
 
 namespace Exrin.IOC.LightInjectServiceProvider
 {
@@ -37,6 +38,11 @@ namespace Exrin.IOC.LightInjectServiceProvider
             {
                 Initialized.Invoke(this, i_Resolver);
             }
+        }
+
+        protected internal virtual Action<object> GetRoot()
+        {
+            return (i_View) => { Application.Current.MainPage = i_View as Page; };
         }
     }
 }

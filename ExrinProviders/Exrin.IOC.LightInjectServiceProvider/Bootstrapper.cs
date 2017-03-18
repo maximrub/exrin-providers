@@ -11,14 +11,14 @@ namespace Exrin.IOC.LightInjectServiceProvider
         private static bool s_IsInitialized = false;
         private Exrin.Framework.Bootstrapper m_Bootstrapper;
 
-        private Bootstrapper(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer, Action<object> i_SetRoot)
+        private Bootstrapper(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer)
         {
             IServiceCollection services = new ServiceCollection();
             ServiceContainer container = new ServiceContainer();
 
             configureServices(services, i_AppInitializer, i_PlatformInitializer);
             register(container, i_AppInitializer, i_PlatformInitializer);
-            configureExrin(container, services, i_AppInitializer, i_SetRoot);
+            configureExrin(container, services, i_AppInitializer);
         }
 
         /// <exception cref="NullReferenceException" accessor="get">Bootstrapper Init was not called</exception>
@@ -45,11 +45,11 @@ namespace Exrin.IOC.LightInjectServiceProvider
 
         public IInjectionProxy Resolver { get; private set; }
 
-        public static void Init(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer, Action<object> i_SetRoot)
+        public static void Init(PlatformInitializer i_PlatformInitializer, AppInitializer i_AppInitializer)
         {
             if (!IsInitialized)
             {
-                s_Instance = new Bootstrapper(i_PlatformInitializer, i_AppInitializer, i_SetRoot);
+                s_Instance = new Bootstrapper(i_PlatformInitializer, i_AppInitializer);
                 s_IsInitialized = true;
                 notifyInitialized(i_PlatformInitializer, i_AppInitializer);
             }
@@ -64,11 +64,10 @@ namespace Exrin.IOC.LightInjectServiceProvider
         private void configureExrin(
             ServiceContainer i_Container,
             IServiceCollection i_Services,
-            AppInitializer i_AppInitializer,
-            Action<object> i_SetRoot)
+            AppInitializer i_AppInitializer)
         {
             InjectionProxy injectionProxy = new InjectionProxy(i_Container, i_Services);
-            m_Bootstrapper = new Exrin.Framework.Bootstrapper(injectionProxy, i_SetRoot);
+            m_Bootstrapper = new Exrin.Framework.Bootstrapper(injectionProxy, i_AppInitializer.GetRoot());
             i_AppInitializer.RegisterFrameworkAssemblies(m_Bootstrapper);
             Resolver = m_Bootstrapper.Init();
         }
