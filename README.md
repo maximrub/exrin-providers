@@ -7,9 +7,9 @@ The purpose of this project is to provide you with common packages to help you t
 
 # Getting Started
 ## Install the Nuget Package
-* Exrin.Base [![NuGet Badge](https://buildstats.info/nuget/Exrin.Base?includePreReleases=true)](https://www.nuget.org/packages/Exrin.Base)
-* Exrin.Navigation.XamarinForms [![NuGet Badge](https://buildstats.info/nuget/Exrin.Navigation.XamarinForms?includePreReleases=true)](https://www.nuget.org/packages/Exrin.Navigation.XamarinForms)
-* Exrin.IOC.LightInjectServiceProvider [![NuGet Badge](https://buildstats.info/nuget/Exrin.IOC.LightInjectServiceProvider?includePreReleases=true)](https://www.nuget.org/packages/Exrin.IOC.LightInjectServiceProvider)
+* Exrin.Base - Base packge [![NuGet Badge](https://buildstats.info/nuget/Exrin.Base?includePreReleases=true)](https://www.nuget.org/packages/Exrin.Base)
+* Exrin.Navigation.XamarinForms - Navigation packge [![NuGet Badge](https://buildstats.info/nuget/Exrin.Navigation.XamarinForms?includePreReleases=true)](https://www.nuget.org/packages/Exrin.Navigation.XamarinForms)
+* Exrin.IOC.LightInjectServiceProvider - LightInject IOC packge with support for Microsoft Extensions services [![NuGet Badge](https://buildstats.info/nuget/Exrin.IOC.LightInjectServiceProvider?includePreReleases=true)](https://www.nuget.org/packages/Exrin.IOC.LightInjectServiceProvider)
 ## Sample app
 [Friends App](../../tree/master/Sample) - A basic sample app to help you get started.
 
