@@ -7,7 +7,7 @@ namespace Exrin.IOC.LightInjectServiceProvider
 {
     public abstract class PlatformInitializer
     {
-        public event EventHandler<IInjectionProxy> Initialized;
+        public event EventHandler<ServiceContainer> Initialized;
 
         /// <summary>
         /// Configure Framework services
@@ -23,11 +23,11 @@ namespace Exrin.IOC.LightInjectServiceProvider
         {
         }
 
-        protected internal virtual void OnInitialized(IInjectionProxy i_Resolver)
+        protected internal virtual void OnInitialized(ServiceContainer i_Container)
         {
             if(Initialized != null)
             {
-                Initialized.Invoke(this, i_Resolver);
+                Initialized.Invoke(this, i_Container);
             }
         }
     }
