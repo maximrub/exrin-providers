@@ -13,4 +13,4 @@ The purpose of this project is to provide you with common packages to help you t
 ## Sample app
 [Friends App](../../tree/master/Sample) - A basic sample app to help you get started.
 
-**Note:** The sample app includes an example on how to use the [Xamarin.Extensions.Logging.MobileCenter](https://github.com/maximrub/Xamarin) package.
+**Note:** The sample app includes an example on how to use the [Xamarin Providers](https://github.com/maximrub/Xamarin).
