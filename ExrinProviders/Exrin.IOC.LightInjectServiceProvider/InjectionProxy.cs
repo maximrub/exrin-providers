@@ -1,26 +1,20 @@
 ﻿using System;
-using System.Linq;
 using Exrin.Abstraction;
 using LightInject;
-using Microsoft.Extensions.DependencyInjection;
-using LightInject.Microsoft.DependencyInjection;
 
-namespace Exrin.IOC.LightInjectServiceProvider
+namespace Exrin.IOC
 {
     public class InjectionProxy : IInjectionProxy
     {
         private readonly ServiceContainer r_Container;
-        private readonly IServiceCollection r_Services;
 
-        public InjectionProxy(ServiceContainer i_Container, IServiceCollection i_Services)
+        public InjectionProxy(ServiceContainer i_Container)
         {
             r_Container = i_Container;
-            r_Services = i_Services;
         }
 
         public void Init()
         {
-            r_Container.CreateServiceProvider(r_Services);
             r_Container.RegisterInstance<IInjectionProxy>(this);
         }
 

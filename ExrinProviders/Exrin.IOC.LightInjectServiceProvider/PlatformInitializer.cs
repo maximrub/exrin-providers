@@ -1,9 +1,8 @@
 ﻿using System;
-using Exrin.Abstraction;
 using LightInject;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Exrin.IOC.LightInjectServiceProvider
+namespace Exrin.IOC
 {
     public abstract class PlatformInitializer
     {
