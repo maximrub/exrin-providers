@@ -43,22 +43,22 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Exrin.Abstraction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exrin.1.2.5\lib\netstandard1.1\Exrin.Abstraction.dll</HintPath>
+      <HintPath>..\packages\Exrin.1.3.0\lib\netstandard1.1\Exrin.Abstraction.dll</HintPath>
     </Reference>
     <Reference Include="Exrin.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exrin.1.2.5\lib\netstandard1.1\Exrin.Common.dll</HintPath>
+      <HintPath>..\packages\Exrin.1.3.0\lib\netstandard1.1\Exrin.Common.dll</HintPath>
     </Reference>
     <Reference Include="Exrin.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exrin.1.2.5\lib\netstandard1.1\Exrin.Framework.dll</HintPath>
+      <HintPath>..\packages\Exrin.1.3.0\lib\netstandard1.1\Exrin.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Exrin.Insights, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Exrin.1.2.5\lib\netstandard1.1\Exrin.Insights.dll</HintPath>
+      <HintPath>..\packages\Exrin.1.3.0\lib\netstandard1.1\Exrin.Insights.dll</HintPath>
     </Reference>
     <Reference Include="LightInject, Version=5.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LightInject.5.0.3\lib\portable-net45+netcore45+wpa81\LightInject.dll</HintPath>
     </Reference>
-    <Reference Include="LightInject.Microsoft.DependencyInjection, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LightInject.Microsoft.DependencyInjection.2.0.1\lib\netstandard1.1\LightInject.Microsoft.DependencyInjection.dll</HintPath>
+    <Reference Include="LightInject.Microsoft.DependencyInjection, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.Microsoft.DependencyInjection.2.0.2\lib\netstandard1.1\LightInject.Microsoft.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.1.1\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
