@@ -9,13 +9,17 @@ namespace Exrin.Navigation.XamarinForms
 {
     public class NavigationProxy : INavigationProxy
     {
-        private readonly Queue<object> r_ParameterQueue;
+        private readonly Queue<object> r_ParameterQueue = new Queue<object>();
         private NavigationPage m_Page;
+
+        public NavigationProxy()
+        {
+            m_Page = new NavigationPage();
+            m_Page.Popped += r_Page_Popped;
+        }
 
         public NavigationProxy(NavigationPage i_Page)
         {
-            r_ParameterQueue = new Queue<object>();
-            ViewStatus = VisualStatus.Unseen;
             m_Page = i_Page;
             m_Page.Popped += r_Page_Popped;
         }
@@ -30,7 +34,7 @@ namespace Exrin.Navigation.XamarinForms
             }
         }
 
-        public VisualStatus ViewStatus { get; set; }
+        public VisualStatus ViewStatus { get; set; } = VisualStatus.Unseen;
 
         public void SetNavigationBar(bool i_IsVisible, object i_Page)
         {
@@ -59,7 +63,8 @@ namespace Exrin.Navigation.XamarinForms
 
         public Task SilentPopAsync(int i_IndexFromTop)
         {
-            m_Page.Navigation.RemovePage(m_Page.Navigation.NavigationStack[m_Page.Navigation.NavigationStack.Count - i_IndexFromTop - 1]);
+            Page page = m_Page.Navigation.NavigationStack[m_Page.Navigation.NavigationStack.Count - i_IndexFromTop - 1];
+            m_Page.Navigation.RemovePage(page);
 
             return Task.FromResult(true);
         }
