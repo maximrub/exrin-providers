@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Maxim Rubchinsky</copyright>
-    <tags>Xamarin.Forms Exrin IOC LightInject Microsoft.Extensions.DependencyInjection</tags>
+    <tags>Xamarin.Forms Exrin IOC LightInject</tags>
   </metadata>
 </package>

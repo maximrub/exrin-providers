@@ -1,19 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using LightInject;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Exrin.IOC
+namespace Exrin.IOC.LightInject
 {
-    public abstract class PlatformInitializer
+    public abstract class BaseInitializer
     {
         public event EventHandler<ServiceContainer> Initialized;
-
-        /// <summary>
-        /// Configure Framework services
-        /// </summary>
-        protected internal virtual void ConfigureServices(IServiceCollection i_Services)
-        {
-        }
 
         /// <summary>
         /// Register Components using LightInject container
@@ -24,7 +20,7 @@ namespace Exrin.IOC
 
         protected internal virtual void OnInitialized(ServiceContainer i_Container)
         {
-            if(Initialized != null)
+            if (Initialized != null)
             {
                 Initialized.Invoke(this, i_Container);
             }
