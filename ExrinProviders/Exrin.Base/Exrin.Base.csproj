@@ -35,22 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseModel.cs" />
-    <Compile Include="BaseView.xaml.cs">
-      <DependentUpon>BaseView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="PageProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Exrin.Base.nuspec" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Exrin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
