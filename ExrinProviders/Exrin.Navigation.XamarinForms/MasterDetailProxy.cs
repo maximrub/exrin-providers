@@ -41,11 +41,6 @@ namespace Exrin.Navigation.XamarinForms
             set
             {
                 Page page = value as Page;
-                if(string.IsNullOrEmpty(page.Title))
-                {
-                    page.Title = "Please set your MasterPage Title";
-                }
-
                 r_MasterPage.Master = page;
             }
         }
