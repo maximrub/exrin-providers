@@ -9,16 +9,16 @@
     <Authors>Maxim Rubchinsky</Authors>
     <Company>Maxim Rubchinsky</Company>
     <Copyright>Maxim Rubchinsky</Copyright>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
     <Description>LightInject IOC packge for the Exrin Xamarin MVVM framework</Description>
     <PackageTags>Xamarin.Forms Exrin IOC LightInject</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Exrin" Version="2.0.1" />
-    <PackageReference Include="LightInject" Version="5.0.3" />
+    <PackageReference Include="Exrin" Version="2.0.2" />
+    <PackageReference Include="LightInject" Version="5.1.0" />
   </ItemGroup>
 
 </Project>
