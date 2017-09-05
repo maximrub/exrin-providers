@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Exrin.Abstraction;
+using Exrin.Common;
 using Exrin.Framework;
 using Xamarin.Forms;
 
@@ -52,11 +53,13 @@ namespace Exrin.Navigation.XamarinForms
 
         public async Task PopAsync()
         {
+            closeMenu();
             await m_Page.PopAsync();
         }
 
         public async Task PopAsync(object i_Parameter)
         {
+            closeMenu();
             r_ParameterQueue.Enqueue(i_Parameter);
             await m_Page.PopAsync();
         }
@@ -72,12 +75,13 @@ namespace Exrin.Navigation.XamarinForms
         /// <exception cref="Exception">only Xamarin Page can be pushed</exception>
         public async Task PushAsync(object i_Page)
         {
-            var xamarinPage = i_Page as Page;
+            Page xamarinPage = i_Page as Page;
             if(xamarinPage == null)
             {
                 throw new Exception("only Xamarin Page can be pushed");
             }
 
+            closeMenu();
             await m_Page.PushAsync(xamarinPage);
         }
 
@@ -102,7 +106,7 @@ namespace Exrin.Navigation.XamarinForms
 
         protected virtual void OnPagePopped(Page i_PoppedPage)
         {
-            if (OnPopped != null)
+            if(OnPopped != null)
             {
                 ViewNavigationArgs viewNavigationArgs = new ViewNavigationArgs();
                 viewNavigationArgs.PoppedView = i_PoppedPage as IView;
@@ -115,6 +119,24 @@ namespace Exrin.Navigation.XamarinForms
         private void r_Page_Popped(object i_Sender, NavigationEventArgs i_EventArgs)
         {
             OnPagePopped(i_EventArgs.Page);
+        }
+
+        /// <summary>
+        /// If MasterDetailPage, close the menu
+        /// </summary>
+        private void closeMenu()
+        {
+            ThreadHelper.RunOnUIThread(
+                () =>
+                    {
+                        if(Device.RuntimePlatform != Device.Windows && Device.Idiom != TargetIdiom.Desktop)
+                        {
+                            if(Application.Current.MainPage is MasterDetailPage)
+                            {
+                                ((MasterDetailPage)Application.Current.MainPage).IsPresented = false;
+                            }
+                        }
+                    });
         }
     }
 }
