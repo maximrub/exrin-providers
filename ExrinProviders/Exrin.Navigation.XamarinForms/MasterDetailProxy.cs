@@ -43,7 +43,7 @@ namespace Exrin.Navigation.XamarinForms
                 Page page = value as Page;
                 if (string.IsNullOrEmpty(page.Title))
                 {
-                    page.Title = string.Empty;
+                    page.Title = "Master";
                 }
                 
                 r_MasterPage.Master = page;
