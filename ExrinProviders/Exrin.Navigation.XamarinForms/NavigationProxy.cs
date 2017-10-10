@@ -129,7 +129,7 @@ namespace Exrin.Navigation.XamarinForms
             ThreadHelper.RunOnUIThread(
                 () =>
                     {
-                        if(Device.RuntimePlatform != Device.Windows && Device.Idiom != TargetIdiom.Desktop)
+                        if(Device.RuntimePlatform != Device.UWP && Device.Idiom != TargetIdiom.Desktop)
                         {
                             if(Application.Current.MainPage is MasterDetailPage)
                             {

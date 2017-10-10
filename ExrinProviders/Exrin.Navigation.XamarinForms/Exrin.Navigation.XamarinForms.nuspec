@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/maximrub/ExrinProviders</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Maxim Rubchinsky</copyright>
     <tags>Xamarin.Forms Exrin Navigation</tags>
   </metadata>
